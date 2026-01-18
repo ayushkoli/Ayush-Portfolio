@@ -50,10 +50,11 @@ export default function Header() {
       return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
     }
 
-    const smoothScrollTo = (targetY: number, duration: number = 800) => {
-      const startY = window.pageYOffset
+    const smoothScrollTo = (targetY: number, duration: number = 1000) => {
+      const startY = window.pageYOffset || window.scrollY
       const distance = targetY - startY
       let startTime: number | null = null
+      let rafId: number | null = null
 
       const animation = (currentTime: number) => {
         if (startTime === null) startTime = currentTime
@@ -61,14 +62,27 @@ export default function Header() {
         const progress = Math.min(timeElapsed / duration, 1)
         const ease = easeInOutCubic(progress)
 
-        window.scrollTo(0, startY + distance * ease)
+        const currentY = startY + distance * ease
+        window.scrollTo({
+          top: currentY,
+          behavior: 'auto' // Use 'auto' to prevent browser smooth scroll interference
+        })
 
         if (progress < 1) {
-          requestAnimationFrame(animation)
+          rafId = requestAnimationFrame(animation)
+        } else {
+          rafId = null
         }
       }
 
-      requestAnimationFrame(animation)
+      rafId = requestAnimationFrame(animation)
+      
+      // Return cleanup function if needed
+      return () => {
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId)
+        }
+      }
     }
 
     const handleAnchorClick = (e: MouseEvent) => {
@@ -78,14 +92,24 @@ export default function Header() {
         const href = anchor.getAttribute("href")
         if (href && href.startsWith("#")) {
           e.preventDefault()
+          e.stopPropagation()
+          
           const targetId = href.substring(1)
           const targetElement = document.getElementById(targetId)
           if (targetElement) {
+            // Prevent any scroll jump by using instant scroll first
+            const currentScroll = window.pageYOffset
+            window.scrollTo({ top: currentScroll, behavior: 'auto' })
+            
+            // Calculate target position
             const headerOffset = 80
             const elementPosition = targetElement.getBoundingClientRect().top
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset
 
-            smoothScrollTo(offsetPosition)
+            // Start smooth scroll immediately on next frame
+            requestAnimationFrame(() => {
+              smoothScrollTo(offsetPosition)
+            })
           }
         }
       }
