@@ -53,7 +53,7 @@ export function HeroTechBubbles() {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const [bubbles, setBubbles] = React.useState<TechBubble[]>([])
   const [mousePosition, setMousePosition] = React.useState({ x: 50, y: 50 })
-  const animationFrameRef = React.useRef<number>()
+  const animationFrameRef = React.useRef<number | undefined>(undefined)
 
   // Track mouse position
   React.useEffect(() => {
