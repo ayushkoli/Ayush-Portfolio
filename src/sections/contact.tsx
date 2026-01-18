@@ -8,9 +8,9 @@ export default function Contact() {
   return (
     <Section id="contact" className="pt-4 sm:pt-6 md:pt-8 pb-16 sm:pb-24">
       <div className="rounded-xl border border-border/60 bg-card p-6 sm:p-8 md:p-10 text-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">Let&apos;s build something exceptional.</h2>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold">Let’s Work Together</h2>
         <p className="mt-2 text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-          Have an opportunity or idea? I'd love to hear it — Twitter (X) is the quickest way to reach me.
+          Open to opportunities, collaborations, and ideas worth exploring.
         </p>
         <div className="mt-6 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3">
           <Button asChild size="sm" className="text-sm w-full sm:w-auto">
