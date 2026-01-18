@@ -63,7 +63,7 @@ export default function SocialLinks({
         <FaSquareXTwitter size={size} aria-hidden="true" />
         <span className="sr-only">LinkedIn</span>
       </a>
-      <a href="/ayushkoliresume.PDF" download aria-label="Resume" className={linkClasses}>
+      <a href="/ayushkoliresume.pdf" download aria-label="Resume" className={linkClasses}>
         <MdOutlineDescription size={size} aria-hidden="true" />
         <span className="sr-only">Resume</span>
       </a>

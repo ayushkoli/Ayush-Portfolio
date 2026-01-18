@@ -137,7 +137,7 @@ export default function Header() {
           to="/"
           className="font-mono text-xs sm:text-sm tracking-tight text-muted-foreground hover:text-foreground transition-colors"
         >
-          {"<dev/>"} Ayush.exe
+          {"<dev/>"} Ayushkoli.exe
         </Link>
 
         {/* NAVIGATION - Desktop */}

@@ -35,7 +35,7 @@ export default function Hero() {
               </a>
             </Button>
             <Button asChild variant="outline" size="sm" className="text-sm">
-              <a href="/ayushkoliresume.PDF" download aria-label="Download resume">
+              <a href="/ayushkoliresume.pdf" download aria-label="Download resume">
                 My Resume
               </a>
             </Button>
