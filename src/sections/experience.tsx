@@ -9,7 +9,7 @@ const items = [
       "Completed an in-office, stipend-based internship at a product-based company",
       "Contributed to building and maintaining company products",
       "Collaborated with teams and attended client meetings",
-      "Optimized development workflows — reducing dev time and improving product delivery",
+      "Optimized development workflows reducing dev time and improving product delivery",
     ],
   },
   {
