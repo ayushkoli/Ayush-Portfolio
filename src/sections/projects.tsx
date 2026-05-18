@@ -6,33 +6,55 @@ import { ArrowRight } from "lucide-react"
 
 const projects = [
   {
-    title: "Gramin Arogya - AI-Powered Rural Healthcare Platform",
+    title: "Gramin Arogya - AI-Powered Rural Healthcare Management",
     desc: "Built a full-stack AI-powered healthcare platform for rural areas with features like symptom analysis, real-time health monitoring, and multilingual support. Integrated telemedicine, AI-driven diagnosis, digital prescriptions, and government healthcare scheme access.",
-    skills: ["Node.js", "MongoDB", "WebSocket", "JavaScript", "AI/ML Models", "HTML/CSS"],
+    skills: [
+      "Node.js",
+      "MongoDB",
+      "WebSocket",
+      "JavaScript",
+      "AI/ML Models",
+      "HTML/CSS",
+    ],
     img: "/gramin-arogya.png",
     link: "#",
     githubLink: "https://github.com/ayushkoli/Gramin-Arogya",
     showArrow: false,
   },
   {
-    title: "Quick Tools - Multi-Utility Web Tool Suite",
-    desc: "Developed a multi-utility web application integrating diverse features into a single, seamless user experience using JavaScript. Designed a responsive and modular tool suite with API integrations for real-time functionalities.",
-    skills: ["JavaScript", "HTML", "CSS", "REST APIs", "Git"],
+    title: "WriteSpace - Social Media Blog Platform",
+    desc: "Built a full-stack social media application with JWT auth, CRUD posts, like/comment system, and user profiles using React, Node.js, Express, and MongoDB.",
+    skills: [
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "JWT",
+      "bcrypt",
+    ],
     img: "/quick-tools.png",
-    link: "https://ayushkoli.github.io/Quicktools/",
-    githubLink: "https://github.com/ayushkoli/Quicktools",
+    link: "https://writespace-black.vercel.app/",
+    githubLink: "https://github.com/ayushkoli/Writespace",
     showArrow: true,
   },
   {
     title: "Video Calling App – Real-Time Communication Platform",
     desc: "Developed a secure, real-time video calling application using WebRTC, enabling low-latency peer-to-peer communication. Implemented dynamic room creation, encrypted media streams, and real-time connection management, optimizing connection setup to reduce call initiation time by 20%.",
-    skills: ["WebRTC", "JavaScript", "Node.js", "Express.js", "HTML/CSS", "Socket.IO", "STUN/TURN"],
+    skills: [
+      "WebRTC",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "HTML/CSS",
+      "Socket.IO",
+      "STUN/TURN",
+    ],
     img: "/video.png",
     link: "https://videocall-lza3.onrender.com",
     githubLink: "https://github.com/ayushkoli/videocall",
     showArrow: true,
   },
-]
+];
 
 export default function Projects() {
   return (
