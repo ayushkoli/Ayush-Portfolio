@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { SiJavascript, SiNodedotjs, SiExpress, SiMongodb, SiReact } from "react-icons/si";
 import { HeroTechBubbles } from "@/components/hero-tech-bubbles"
+import { getTechColor } from "@/lib/tech-colors"
 
 
 export default function Hero() {
@@ -17,12 +18,14 @@ export default function Hero() {
               Open to new opportunities
             </ShimmerButton>
           </span>
-          <h1 className="text-pretty text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight mt-2 sm:mt-0">
-          From concept to production ready systems
-          </h1>
-          <p className="text-sm sm:text-base text-muted-foreground text-balance">
-            Full-stack developer focused on backend engineering. I enjoy designing efficient backend systems, and exploring new technologies. As a fresher, I'm focused on growing through practical projects, open-source work, and solving engineering challenges.
-          </p>
+          <div className="space-y-1">
+            <h1 className="text-pretty text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
+              Hi, I am Ayush Koli
+            </h1>
+            <p className="text-sm sm:text-base text-muted-foreground text-balance">
+              Full-stack developer focused on backend engineering. I enjoy designing efficient backend systems, and exploring new technologies. As a fresher, I'm focused on growing through practical projects, open-source work, and solving engineering challenges.
+            </p>
+          </div>
           <div className="flex flex-wrap gap-2 sm:gap-3">
             <Button asChild size="sm" className="text-sm">
               <a href="#projects" aria-label="View projects">
@@ -41,11 +44,11 @@ export default function Hero() {
             </Button>
           </div>
           <ul className="flex flex-wrap gap-2 sm:gap-3 text-xs text-muted-foreground">
-            <SiJavascript className="size-5 sm:size-7" />
-            <SiNodedotjs className="size-5 sm:size-7" />
-            <SiExpress className="size-5 sm:size-7" />
-            <SiMongodb className="size-5 sm:size-7" />
-            <SiReact className="size-5 sm:size-7" />
+            <SiJavascript className="size-5 sm:size-7 transition-all duration-300 hover:scale-110" style={{ color: getTechColor("javascript") }} />
+            <SiNodedotjs className="size-5 sm:size-7 transition-all duration-300 hover:scale-110" style={{ color: getTechColor("node.js") }} />
+            <SiExpress className="size-5 sm:size-7 transition-all duration-300 hover:scale-110" style={{ color: getTechColor("express") }} />
+            <SiMongodb className="size-5 sm:size-7 transition-all duration-300 hover:scale-110" style={{ color: getTechColor("mongodb") }} />
+            <SiReact className="size-5 sm:size-7 transition-all duration-300 hover:scale-110" style={{ color: getTechColor("react") }} />
           </ul>
         </div>
 

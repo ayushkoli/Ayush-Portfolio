@@ -7,7 +7,7 @@ export default function Footer() {
         <p className="text-center md:text-left">© {new Date().getFullYear()} Ayush Koli. All rights reserved.</p>
         <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
           <p className="font-mono text-center sm:text-left">Built with React · Tailwind CSS</p>
-          <SocialLinks />
+          <SocialLinks tooltipPosition="top" />
         </div>
       </div>
     </footer>

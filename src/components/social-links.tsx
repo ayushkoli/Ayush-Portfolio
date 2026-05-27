@@ -2,6 +2,7 @@ import { CiLinkedin } from "react-icons/ci"
 import { FaGithub } from "react-icons/fa";
 import { MdOutlineEmail, MdOutlineDescription } from "react-icons/md";
 import { FaSquareXTwitter } from "react-icons/fa6";
+import { cn } from "@/lib/utils"
 
 type SocialLinksProps = {
   size?: number
@@ -11,6 +12,7 @@ type SocialLinksProps = {
   linkedin?: string
   xaccount?: string
   leetcode?: string
+  tooltipPosition?: "top" | "bottom"
 }
 
 type SocialLink = {
@@ -29,7 +31,8 @@ export default function SocialLinks({
   github = "https://github.com/ayushkoli",
   linkedin = "https://www.linkedin.com/in/ayush-koli-445160299",
   xaccount = "https://x.com/Ayush_1874",
-  leetcode = "https://leetcode.com/u/ayushkoli/"
+  leetcode = "https://leetcode.com/u/ayushkoli/",
+  tooltipPosition = "bottom"
 }: SocialLinksProps): React.JSX.Element {
 
   const links: SocialLink[] = [
@@ -118,7 +121,14 @@ export default function SocialLinks({
               <span className="sr-only">{label}</span>
             </a>
 
-            <span className="pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded px-1.5 py-0.5 text-[10px] font-mono bg-card border border-border/60 text-muted-foreground opacity-0 scale-95 -translate-y-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-200 ease-out z-50">
+            <span 
+              className={cn(
+                "pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap rounded px-1.5 py-0.5 text-[10px] font-mono bg-card border border-border/60 text-muted-foreground opacity-0 scale-95 transition-all duration-200 ease-out z-50",
+                tooltipPosition === "top"
+                  ? "-top-8 translate-y-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0"
+                  : "-bottom-7 -translate-y-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0"
+              )}
+            >
               {label}
             </span>
           </div>

@@ -1,15 +1,14 @@
 "use client"
 
+import * as React from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Section from "@/components/section"
 import IconBadge from "@/components/icon-badge"
 import {
   SiJavascript,
-  SiPython,
   SiReact,
   SiNodedotjs,
   SiTailwindcss,
-  SiMysql,
   SiMongodb,
   SiGit,
   SiGithub,
@@ -18,23 +17,36 @@ import {
   SiCss3,
   SiNotion,
   SiFigma,
+  SiPostgresql,
+  SiSupabase,
+  SiGitlab,
+  SiVercel,
+  SiCloudinary,
+  SiRender,
 } from "react-icons/si"
-import { VscVscode } from "react-icons/vsc"
-import { FaHtml5, FaJava } from "react-icons/fa"
-import type { IconType } from "react-icons"
+import { FaHtml5 } from "react-icons/fa"
+import { 
+  JavaIcon, 
+  PythonIcon, 
+  MySQLIcon, 
+  GoogleCloudIcon, 
+  FirebaseIcon, 
+  NetlifyIcon, 
+  JWTIcon 
+} from "@/components/tech-icons"
 
 type SkillCategory = {
   title: string
-  items: { name: string; icon: IconType }[]
+  items: { name: string; icon: React.ComponentType<any> }[]
 }
 
 const skillCategories: SkillCategory[] = [
   {
     title: "Languages",
     items: [
-      { name: "Java", icon: FaJava },
+      { name: "Java", icon: JavaIcon },
       { name: "JavaScript", icon: SiJavascript },
-      { name: "Python", icon: SiPython },
+      { name: "Python", icon: PythonIcon },
       { name: "HTML", icon: FaHtml5 },
       { name: "CSS", icon: SiCss3 },
     ],
@@ -51,8 +63,21 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Databases",
     items: [
-      { name: "SQL", icon: SiMysql },
+      { name: "MySQL", icon: MySQLIcon },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Supabase", icon: SiSupabase },
       { name: "MongoDB", icon: SiMongodb },
+    ],
+  },
+  {
+    title: "Cloud & Deployment",
+    items: [
+      { name: "Google Cloud", icon: GoogleCloudIcon },
+      { name: "Render", icon: SiRender },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Firebase", icon: FirebaseIcon },
+      { name: "Cloudinary", icon: SiCloudinary },
+      { name: "Netlify", icon: NetlifyIcon },
     ],
   },
   {
@@ -60,10 +85,11 @@ const skillCategories: SkillCategory[] = [
     items: [
       { name: "Git", icon: SiGit },
       { name: "GitHub", icon: SiGithub },
-      { name: "VS Code", icon: VscVscode },
+      { name: "GitLab", icon: SiGitlab },
       { name: "Postman", icon: SiPostman },
       { name: "Notion", icon: SiNotion },
       { name: "Figma", icon: SiFigma },
+      { name: "JWT", icon: JWTIcon },
     ],
   },
 ]

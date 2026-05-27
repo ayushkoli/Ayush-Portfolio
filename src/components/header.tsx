@@ -2,8 +2,43 @@ import { Link, useLocation } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import SocialLinks from "./social-links"
 import * as React from "react"
-import { X, Link as LinkIcon } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
+
+const menuVariants = {
+  open: {
+    opacity: 1,
+    height: "auto",
+    transition: {
+      height: { type: "spring", stiffness: 400, damping: 30 },
+      opacity: { duration: 0.2 },
+      staggerChildren: 0.05,
+      delayChildren: 0.05
+    }
+  },
+  closed: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      height: { type: "spring", stiffness: 400, damping: 30 },
+      opacity: { duration: 0.15 },
+      staggerChildren: 0.03,
+      staggerDirection: -1
+    }
+  }
+} as const
+
+const itemVariants = {
+  open: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
+  closed: { opacity: 0, x: -10, transition: { duration: 0.15 } }
+} as const
+
+const mobileLinks = [
+  { href: "#hero", label: "Home" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#skills", label: "Skills" },
+  { href: "#contact", label: "Contact" },
+]
 
 export default function Header() {
   const location = useLocation()
@@ -143,35 +178,73 @@ export default function Header() {
         {/* NAVIGATION - Desktop */}
         {isHome && (
           <nav className="hidden md:flex items-center gap-3">
-          <a href="#hero" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Home
-          </a>
-          <a href="#projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Projects
-          </a>
-          {/* <a href="#experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Experience
-          </a> */}
-          <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Contact
-          </a>
-          <a href="#skills" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            skills
-          </a>
-        </nav>
+            <a href="#hero" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Home
+            </a>
+            <a href="#experience" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Experience
+            </a>
+            <a href="#projects" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Projects
+            </a>
+            <a href="#skills" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Skills
+            </a>
+            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Contact
+            </a>
+          </nav>
         )}
         
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Social Links - Desktop */}
           <SocialLinks className="hidden md:flex" />
 
-          {/* Mobile Social Links Hamburger */}
+          {/* Mobile Hamburger Navigation Menu */}
           <button
             onClick={() => setLinksOpen(!linksOpen)}
-            className="md:hidden p-2 rounded-md border border-border/60 bg-card/50 hover:bg-card transition-colors text-muted-foreground hover:text-foreground relative"
-            aria-label="Toggle social links menu"
+            className="md:hidden p-2 rounded-md border border-border/60 bg-card/50 hover:bg-card transition-colors text-muted-foreground hover:text-foreground relative flex items-center justify-center focus:outline-none"
+            aria-label="Toggle navigation menu"
           >
-            {linksOpen ? <X size={18} /> : <LinkIcon size={18} />}
+            <svg width="18" height="18" viewBox="0 0 20 20" className="w-[18px] h-[18px]">
+              <motion.path
+                fill="transparent"
+                strokeWidth="2"
+                stroke="currentColor"
+                strokeLinecap="round"
+                variants={{
+                  closed: { d: "M 2 2.5 L 18 2.5" },
+                  open: { d: "M 3 16.5 L 17 2.5" }
+                }}
+                animate={linksOpen ? "open" : "closed"}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.path
+                d="M 2 9.4 L 18 9.4"
+                fill="transparent"
+                strokeWidth="2"
+                stroke="currentColor"
+                strokeLinecap="round"
+                variants={{
+                  closed: { opacity: 1 },
+                  open: { opacity: 0 }
+                }}
+                animate={linksOpen ? "open" : "closed"}
+                transition={{ duration: 0.2 }}
+              />
+              <motion.path
+                fill="transparent"
+                strokeWidth="2"
+                stroke="currentColor"
+                strokeLinecap="round"
+                variants={{
+                  closed: { d: "M 2 16.3 L 18 16.3" },
+                  open: { d: "M 3 2.5 L 17 16.5" }
+                }}
+                animate={linksOpen ? "open" : "closed"}
+                transition={{ duration: 0.3 }}
+              />
+            </svg>
           </button>
 
           {/* <ThemeToggle /> */}
@@ -179,39 +252,64 @@ export default function Header() {
           {/* Hire Me button (only show on homepage) */}
           {isHome && (
             <Button asChild size="sm" className="hidden md:flex font-mono text-xs sm:text-sm px-2 sm:px-3">
-            <a href="#contact" aria-label="Contact me">
-              Hire me
-            </a>
-          </Button>
+              <a href="#contact" aria-label="Contact me">
+                Hire me
+              </a>
+            </Button>
           )}
           
         </div>
       </div>
 
-      {/* Mobile Social Links Menu */}
-      <AnimatePresence mode="wait">
+      {/* Mobile Menu Drawer Overlay */}
+      <AnimatePresence>
         {linksOpen && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ 
-              type: "spring",
-              stiffness: 500,
-              damping: 40,
-              mass: 0.6
-            }}
-            className="md:hidden border-t border-border/60 bg-card/95 backdrop-blur-sm overflow-hidden"
+            variants={menuVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="md:hidden border-t border-border/60 bg-card/95 backdrop-blur-md overflow-hidden"
             style={{ 
               willChange: "height, opacity",
               transform: "translateZ(0)",
               backfaceVisibility: "hidden",
-              WebkitBackfaceVisibility: "hidden",
-              WebkitTransform: "translateZ(0)"
+              WebkitBackfaceVisibility: "hidden"
             }}
           >
-            <div className="mx-auto max-w-6xl px-4 py-4">
-              <SocialLinks size={18} />
+            <div className="mx-auto max-w-6xl px-5 py-6 flex flex-col gap-6">
+              {/* Navigation Links */}
+              <nav className="flex flex-col gap-1">
+                {mobileLinks.map((link) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setLinksOpen(false)}
+                    variants={itemVariants}
+                    className="block py-3 text-base font-medium text-muted-foreground hover:text-foreground transition-colors border-b border-border/10 last:border-0"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* Separator */}
+              <motion.div variants={itemVariants} className="border-t border-border/40" />
+
+              {/* Social Links and CTA */}
+              <motion.div variants={itemVariants} className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground">Find me on</span>
+                  <SocialLinks size={18} />
+                </div>
+                {isHome && (
+                  <Button asChild size="default" className="w-full font-mono text-xs mt-2">
+                    <a href="#contact" onClick={() => setLinksOpen(false)} aria-label="Contact me">
+                      Hire me
+                    </a>
+                  </Button>
+                )}
+              </motion.div>
             </div>
           </motion.div>
         )}
