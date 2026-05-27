@@ -9,8 +9,8 @@ const menuVariants = {
     opacity: 1,
     height: "auto",
     transition: {
-      height: { type: "spring", stiffness: 400, damping: 30 },
-      opacity: { duration: 0.2 },
+      height: { type: "tween", ease: "easeOut", duration: 0.3 },
+      opacity: { duration: 0.25 },
       staggerChildren: 0.05,
       delayChildren: 0.05
     }
@@ -19,8 +19,8 @@ const menuVariants = {
     opacity: 0,
     height: 0,
     transition: {
-      height: { type: "spring", stiffness: 400, damping: 30 },
-      opacity: { duration: 0.15 },
+      height: { type: "tween", ease: "easeInOut", duration: 0.25 },
+      opacity: { duration: 0.2 },
       staggerChildren: 0.03,
       staggerDirection: -1
     }
@@ -203,48 +203,51 @@ export default function Header() {
           {/* Mobile Hamburger Navigation Menu */}
           <button
             onClick={() => setLinksOpen(!linksOpen)}
-            className="md:hidden p-2 rounded-md border border-border/60 bg-card/50 hover:bg-card transition-colors text-muted-foreground hover:text-foreground relative flex items-center justify-center focus:outline-none"
+            className="md:hidden p-2 rounded-md border border-border/60 bg-card/50 hover:bg-card transition-colors text-muted-foreground hover:text-foreground relative flex items-center justify-center focus:outline-none w-9 h-9 overflow-hidden"
             aria-label="Toggle navigation menu"
           >
-            <svg width="18" height="18" viewBox="0 0 20 20" className="w-[18px] h-[18px]">
-              <motion.path
-                fill="transparent"
-                strokeWidth="2"
-                stroke="currentColor"
-                strokeLinecap="round"
-                variants={{
-                  closed: { d: "M 2 2.5 L 18 2.5" },
-                  open: { d: "M 3 16.5 L 17 2.5" }
-                }}
-                animate={linksOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.path
-                d="M 2 9.4 L 18 9.4"
-                fill="transparent"
-                strokeWidth="2"
-                stroke="currentColor"
-                strokeLinecap="round"
-                variants={{
-                  closed: { opacity: 1 },
-                  open: { opacity: 0 }
-                }}
-                animate={linksOpen ? "open" : "closed"}
-                transition={{ duration: 0.2 }}
-              />
-              <motion.path
-                fill="transparent"
-                strokeWidth="2"
-                stroke="currentColor"
-                strokeLinecap="round"
-                variants={{
-                  closed: { d: "M 2 16.3 L 18 16.3" },
-                  open: { d: "M 3 2.5 L 17 16.5" }
-                }}
-                animate={linksOpen ? "open" : "closed"}
-                transition={{ duration: 0.3 }}
-              />
-            </svg>
+            <AnimatePresence mode="wait" initial={false}>
+              {linksOpen ? (
+                <motion.svg
+                  key="close"
+                  initial={{ rotate: -45, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 45, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </motion.svg>
+              ) : (
+                <motion.svg
+                  key="hamburger"
+                  initial={{ rotate: 45, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -45, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="4" y1="12" x2="20" y2="12"></line>
+                  <line x1="4" y1="6" x2="20" y2="6"></line>
+                  <line x1="4" y1="18" x2="20" y2="18"></line>
+                </motion.svg>
+              )}
+            </AnimatePresence>
           </button>
 
           {/* <ThemeToggle /> */}
