@@ -5,22 +5,7 @@ import { FaGithub } from "react-icons/fa"
 import { ArrowRight } from "lucide-react"
 
 const projects = [
-  {
-    title: "Gramin Arogya - AI-Powered Rural Healthcare Management",
-    desc: "Built a full-stack AI-powered healthcare platform for rural areas with features like symptom analysis, real-time health monitoring, and multilingual support. Integrated telemedicine, AI-driven diagnosis, digital prescriptions, and government healthcare scheme access.",
-    skills: [
-      "Node.js",
-      "MongoDB",
-      "WebSocket",
-      "JavaScript",
-      "AI/ML Models",
-      "HTML/CSS",
-    ],
-    img: "/gramin-arogya.png",
-    link: "#",
-    githubLink: "https://github.com/ayushkoli/Gramin-Arogya",
-    showArrow: false,
-  },
+  
   {
     title: "WriteSpace - Social Media Blog Platform",
     desc: "Built a full-stack social media application with JWT auth, CRUD posts, like/comment system, and user profiles using React, Node.js, Express, and MongoDB.",
@@ -35,6 +20,22 @@ const projects = [
     img: "/quick-tools.png",
     link: "https://writespace-black.vercel.app/",
     githubLink: "https://github.com/ayushkoli/Writespace",
+    showArrow: true,
+  },
+  {
+    title: "Taskflow - Sticky Notes & Checklist App",
+    desc: "A full-stack productivity app featuring draggable sticky notes, interactive todo lists, and an organized dashboard for managing daily tasks and ideas.",
+    skills: [
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT",
+      "CSS",
+    ],
+    img: "/notes.png",
+    link: "https://taskflow-red-xi.vercel.app/",
+    githubLink: "https://github.com/ayushkoli/Taskflow",
     showArrow: true,
   },
   {
