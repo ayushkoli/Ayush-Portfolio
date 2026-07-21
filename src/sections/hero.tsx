@@ -14,9 +14,12 @@ export default function Hero() {
         <div className="space-y-4 sm:space-y-6 order-2 md:order-1">
           <span className="block mb-1 sm:mb-0">
             <ShimmerButton
-              className="inline-flex items-center text-xs font-mono px-2 py-1 rounded-md bg-secondary text-secondary-foreground border border-border/60">
-              Open to new opportunities
-            </ShimmerButton>
+  className="inline-flex items-center text-xs font-mono px-2 py-1 rounded-md 
+    bg-white text-black border border-gray-200 
+    dark:bg-secondary dark:text-secondary-foreground dark:border-border/60"
+>
+  Open to new opportunities
+</ShimmerButton>
           </span>
           <div className="space-y-1">
             <h1 className="text-pretty text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">
