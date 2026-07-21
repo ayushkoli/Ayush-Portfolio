@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -8,15 +8,8 @@
     <title>Ayush Koli - Portfolio</title>
     <meta name="description" content="Ayush Koli - Full Stack Developer Portfolio" />
     <script>
-      (function() {
-        try {
-          const ls = localStorage.getItem('theme');
-          const mql = window.matchMedia('(prefers-color-scheme: dark)');
-          const shouldDark = ls ? (ls === 'dark') : mql.matches;
-          if (shouldDark) document.documentElement.classList.add('dark');
-          else document.documentElement.classList.remove('dark');
-        } catch (_) {}
-      })();
+      // Force dark mode always
+      document.documentElement.classList.add('dark');
     </script>
   </head>
   <body>
