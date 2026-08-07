@@ -2,9 +2,17 @@ import Section from "@/components/section"
 
 const items = [
   {
+    role: "Backend Developer Intern",
+    org: "RevvknewMedia",
+    period: "2026",
+    points: [
+      "Building backend APIs using NestJS, Prisma, and SQLite, following modular service-based architecture",
+    ],
+  },
+  {
     role: "Web Developer Intern",
     org: "Abhinav IT Solutions Pvt Ltd",
-    period: "2024",
+    period: "2025",
     points: [
       "Completed an in-office, stipend-based internship at a product-based company",
       "Contributed to building and maintaining company products",
@@ -15,7 +23,7 @@ const items = [
   {
     role: "National Level Hackathon WINNER",
     org: "InnovateYou Techathon 2.0",
-    period: "2024",
+    period: "2025",
     points: [
       "Winner of a 24-hour national-level hackathon at AISSMS IoT College",
       "Competed in the healthcare domain",
